@@ -21,7 +21,6 @@ export class MiniTweets extends React.Component {
       .collection('talks')
       .onSnapshot((v) => {
         console.log(v)
-
         this.setState({ docs: v.docs.map((v) => v.data()) })
       })
   }
