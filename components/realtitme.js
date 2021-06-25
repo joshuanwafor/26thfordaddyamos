@@ -21,7 +21,8 @@ export class MiniTweets extends React.Component {
       .collection('talks')
       .onSnapshot((v) => {
         console.log(v)
-        this.setState({ docs: v.docs })
+
+        this.setState({ docs: v.docs.map((v) => v.data()) })
       })
   }
   render() {
@@ -90,6 +91,7 @@ export class MiniTweets extends React.Component {
 
         <ul className="divide-y divide-gray-200 dark:divide-gray-700">
           {this.state.docs.map((frontMatter, i) => {
+            console.log(frontMatter)
             const { fullname, body, time } = frontMatter
             return (
               <li key={i} className="py-12">
