@@ -20,12 +20,16 @@ export class MiniTweets extends React.Component {
       .firestore()
       .collection('talks')
       .onSnapshot((v) => {
-        console.log(v)
-        this.setState({ docs: v.docs.map((v) => v.data()) })
+        this.setState({
+          docs: v.docs.map((v) => {
+            console.log(v.data())
+            return v.data()
+          }),
+        })
       })
   }
   render() {
-    const { state, saySomething } = this.state
+    const { state, saySomething, docs } = this.state
     console.log(`loaded ${this.state.saySomething}`)
     return (
       <div>
@@ -89,7 +93,7 @@ export class MiniTweets extends React.Component {
         </div>
 
         <ul className="divide-y divide-gray-200 dark:divide-gray-700">
-          {this.state.docs.map((frontMatter, i) => {
+          {docs.map((frontMatter, i) => {
             console.log(frontMatter)
             const { fullname, body, time } = frontMatter
             return (
@@ -99,7 +103,7 @@ export class MiniTweets extends React.Component {
                     <dl>
                       <dt className="sr-only">Published on</dt>
                       <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
-                        {new Date(100)}
+                        {''}
                       </dd>
                     </dl>
                     <div className="space-y-5 xl:col-span-3">
