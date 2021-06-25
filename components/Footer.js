@@ -8,7 +8,6 @@ export default function Footer() {
       <div className="flex flex-col items-center mt-16">
         <div className="flex mb-3 space-x-4">
           <SocialIcon kind="mail" href={`mailto:${siteMetadata.email}`} size="6" />
-          <SocialIcon kind="github" href={siteMetadata.github} size="6" />
           <SocialIcon kind="facebook" href={siteMetadata.facebook} size="6" />
           <SocialIcon kind="youtube" href={siteMetadata.youtube} size="6" />
           <SocialIcon kind="linkedin" href={siteMetadata.linkedin} size="6" />
@@ -23,7 +22,7 @@ export default function Footer() {
         </div>
         <div className="mb-8 text-sm text-gray-500 dark:text-gray-400">
           <Link href="https://github.com/timlrx/tailwind-nextjs-starter-blog">
-            Tailwind Nextjs Theme
+            {/* Tailwind Nextjs Theme */}
           </Link>
         </div>
       </div>
