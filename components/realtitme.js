@@ -1,5 +1,6 @@
 import * as firebase from 'firebase'
 import 'firebase/database'
+import dateformat from 'dateformat'
 import { FirestoreProvider, FirestoreCollection } from '@react-firebase/firestore'
 import React from 'react'
 
@@ -103,7 +104,7 @@ export class MiniTweets extends React.Component {
                     <dl>
                       <dt className="sr-only">Published on</dt>
                       <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
-                        {''}
+                        {dateformat(new Date(time), 'mediumTime')}
                       </dd>
                     </dl>
                     <div className="space-y-5 xl:col-span-3">
