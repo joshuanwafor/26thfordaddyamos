@@ -22,16 +22,15 @@ export class MiniTweets extends React.Component {
       .collection('talks')
       .onSnapshot((v) => {
         this.setState({
-          docs: v.docs.map((v) => {
-            console.log(v.data())
-            return v.data()
+          docs: v.docs.map((da) => {
+            return da.data()
           }),
         })
       })
   }
   render() {
-    const { state, saySomething, docs } = this.state
-    console.log(`loaded ${this.state.saySomething}`)
+    const { state, saySomething, docs, fullname, body } = this.state
+
     return (
       <div>
         <div className="py-10">
@@ -79,13 +78,14 @@ export class MiniTweets extends React.Component {
             <button
               className="py-4 px-6 bg-blue-600"
               onClick={() => {
-                this.setState({ saySomething: false })
                 firebase.default.firestore().collection('talks').add({
-                  fullname: this.state.fullname,
-                  body: this.state.body,
+                  fullname: fullname,
+                  body: body,
                   time: Date.now(),
                   type: 'prayer',
                 })
+
+                this.setState({ saySomething: false })
               }}
             >
               Publish
@@ -94,37 +94,39 @@ export class MiniTweets extends React.Component {
         </div>
 
         <ul className="divide-y divide-gray-200 dark:divide-gray-700">
-          {docs.map((frontMatter, i) => {
-            console.log(frontMatter)
-            const { fullname, body, time } = frontMatter
-            return (
-              <li key={i} className="py-12">
-                <article>
-                  <div className="space-y-2 xl:grid xl:grid-cols-4 xl:space-y-0 xl:items-baseline">
-                    <dl>
-                      <dt className="sr-only">Published on</dt>
-                      <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
-                        {dateformat(new Date(time), 'mediumTime')}
-                      </dd>
-                    </dl>
-                    <div className="space-y-5 xl:col-span-3">
-                      <div className="space-y-6">
-                        <div>
-                          <h2 className="text-2xl font-bold leading-8 tracking-tight">
-                            {'Prayer'}
-                          </h2>
-                          <div className="flex flex-wrap">By, {fullname}</div>
-                        </div>
-                        <div className="prose text-gray-500 max-w-none dark:text-gray-400">
-                          {body}
+          {docs
+            .sort((a, b) => b.time - a.time)
+            .map((frontMatter, i) => {
+              console.log(frontMatter)
+              const { fullname, body, time } = frontMatter
+              return (
+                <li key={i} className="py-12">
+                  <article>
+                    <div className="space-y-2 xl:grid xl:grid-cols-4 xl:space-y-0 xl:items-baseline">
+                      <dl>
+                        <dt className="sr-only">Published on</dt>
+                        <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
+                          {dateformat(new Date(time), 'mediumTime')}
+                        </dd>
+                      </dl>
+                      <div className="space-y-5 xl:col-span-3">
+                        <div className="space-y-6">
+                          <div>
+                            <h2 className="text-2xl font-bold leading-8 tracking-tight">
+                              {'Prayer'}
+                            </h2>
+                            <div className="flex flex-wrap">By, {fullname}</div>
+                          </div>
+                          <div className="prose text-gray-500 max-w-none dark:text-gray-400">
+                            {body}
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                </article>
-              </li>
-            )
-          })}
+                  </article>
+                </li>
+              )
+            })}
         </ul>
       </div>
     )
