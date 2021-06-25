@@ -25,7 +25,8 @@ export default function Home({ posts }) {
             Birthay wishes & prayers
           </h1>
           <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">
-            {/* {siteMetadata.description} */}
+            May God fill your life with a brighter smile and more joy than ever. Happy birthday
+            daddy. We love you.
           </p>
         </div>
 
