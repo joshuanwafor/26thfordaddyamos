@@ -104,6 +104,13 @@ export class MiniTweets extends React.Component {
             .map((frontMatter, i) => {
               console.log(frontMatter)
               const { fullname, body, time } = frontMatter
+
+              if (fullname == '') {
+                return <div></div>
+              }
+              if (body == '') {
+                return <div></div>
+              }
               return (
                 <li key={i} className="py-6">
                   <article>
