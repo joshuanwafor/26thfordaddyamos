@@ -57,6 +57,7 @@ export class MiniTweets extends React.Component {
                   id="message"
                   type="text"
                   placeholder="Type here"
+                  maxLength="260"
                   onChange={(v) => {
                     this.setState({ body: v.target.value })
                   }}
@@ -78,6 +79,10 @@ export class MiniTweets extends React.Component {
             <button
               className="py-4 px-6 bg-blue-600"
               onClick={() => {
+                if (fullname == '' || body == '') {
+                  alert('Ensure you fill in the form before you publish...')
+                  return
+                }
                 firebase.default.firestore().collection('talks').add({
                   fullname: fullname,
                   body: body,
