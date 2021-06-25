@@ -100,7 +100,7 @@ export class MiniTweets extends React.Component {
               console.log(frontMatter)
               const { fullname, body, time } = frontMatter
               return (
-                <li key={i} className="py-12">
+                <li key={i} className="py-6">
                   <article>
                     <div className="space-y-2 xl:grid xl:grid-cols-4 xl:space-y-0 xl:items-baseline">
                       <dl>
@@ -110,10 +110,10 @@ export class MiniTweets extends React.Component {
                         </dd>
                       </dl>
                       <div className="space-y-5 xl:col-span-3">
-                        <div className="space-y-6">
+                        <div className="space-y-3">
                           <div>
-                            <h2 className="text-2xl font-bold leading-8 tracking-tight">
-                              {'Prayer'}
+                            <h2 className="text-sm font-bold leading-8 tracking-tight">
+                              {'Prayer & Wish '}
                             </h2>
                             <div className="flex flex-wrap">By, {fullname}</div>
                           </div>
