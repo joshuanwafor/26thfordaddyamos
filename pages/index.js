@@ -31,7 +31,9 @@ export default function Home({ posts }) {
               May God fill your life with a brighter smile and more joy than ever. Happy birthday
               daddy. We love you.
             </p>
-            <Link>Find Media files...</Link>
+            <Link href="https://drive.google.com/drive/folders/1--EEXTMlIeAAMdioTKmosJT_aosPCB2t?usp=sharing">
+              Find Media files...
+            </Link>
           </div>
           <div className="w-12/12 md:w-6/12">
             <Image
