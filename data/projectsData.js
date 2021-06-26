@@ -1,11 +1,27 @@
 const projectsData = [
   {
-    title: 'A Search Engine',
-    description: `What is you could look up any information in the world? Webpages, images, videos
-    and more. Google has many features to help you find exactly what you're looking
-    for.`,
-    imgSrc: '/static/images/google.png',
-    href: 'https://www.google.com',
+    title: 'Remodelling Of Main Fellowship Auditorium',
+    description: ``,
+    imgSrc: '/static/images/church.JPG',
+    href: '',
+  },
+  {
+    title: 'Establishment Of Children/Teenage/Youth Church Building',
+    description: ``,
+    imgSrc: '/static/images/youth1.jpg',
+    href: '',
+  },
+  {
+    title: 'Establishment Of Angel Of Hope Clinic',
+    description: ``,
+    imgSrc: '/static/images/angel.jpg',
+    href: '',
+  },
+  {
+    title: 'Establishment Of Watchman Academy Secondary School',
+    description: ``,
+    imgSrc: '/static/images/elim.jpg',
+    href: '',
   },
 ]
 
